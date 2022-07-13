@@ -10,6 +10,6 @@ bt.addNode(12);
 bt.addNode(3);
 bt.addNode(20);
 bt.addNode(1);
-bt.prOrder();
+bt.preOrder();
     }
 }

@@ -6,57 +6,49 @@ public class BinaryTree {
     private static class BinaryNode {
         private BinaryNode left = null;
         private BinaryNode right = null;
-        private final int data;
+        private final int value;
 
-        private BinaryNode(int data) {
-            this.data = data;
+        private BinaryNode(int value) {
+            this.value = value;
         }
     }
 
 
-    public void addNode(int data) {
-        BinaryNode newNode = new BinaryNode(data);
+    public void addNode(int value) {
+        BinaryNode newNode = new BinaryNode(value);
         if (root == null) {
             root = newNode;
             return;
         }
-        addNodee(this.root, newNode);
+        addNodeeInternal(this.root, newNode);
     }
 
-    private void addNodee(BinaryNode currentNode, BinaryNode newNode) {
-        if (newNode.data < currentNode.data) {
+    private void addNodeeInternal(BinaryNode currentNode, BinaryNode newNode) {
+        if (newNode.value < currentNode.value) {
             if (currentNode.left == null) {
                 currentNode.left = newNode;
             } else {
-                addNodee(currentNode.left, newNode);
+                addNodeeInternal(currentNode.left, newNode);
             }
         }
-        if (newNode.data > currentNode.data) {
+        if (newNode.value > currentNode.value) {
             if (currentNode.right == null) {
                 currentNode.right = newNode;
             } else {
-                addNodee(currentNode.right, newNode);
+                addNodeeInternal(currentNode.right, newNode);
             }
         }
-        if (newNode.data == currentNode.data) {
-            System.out.println("The item is exist: " + newNode.data);
+        if (newNode.value == currentNode.value) {
+            System.out.println("The item exists: " + newNode.value);
         }
     }
-    public void prOrder() {
-        if (root == null) {
-            return;
-        }
-        Stack<BinaryNode> stack = new Stack<>();
-        stack.push(root);
-        while (!stack.isEmpty()) {
-            BinaryNode temp = stack.pop();
-            System.out.println(temp.data);
-            if (temp.right != null) {
-                stack.push(temp.right);
-            }
-            if (temp.left != null) {
-                stack.push(temp.left);
-            }
-        }
+    public void preOrder() {
+        this.preOrderInternal(this.root);
+    }
+    private void preOrderInternal (BinaryNode currentNode){
+        if (currentNode == null) return;
+        System.out.println(currentNode.value);
+        this.preOrderInternal(currentNode.left);
+        this.preOrderInternal(currentNode.right);
     }
 }
