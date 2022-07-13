@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 public class BinaryTree {
     private BinaryNode root;
 
@@ -37,7 +39,24 @@ public class BinaryTree {
             }
         }
         if (newNode.data == currentNode.data) {
-            System.out.print("The item is exist");
+            System.out.println("The item is exist: " + newNode.data);
+        }
+    }
+    public void prOrder() {
+        if (root == null) {
+            return;
+        }
+        Stack<BinaryNode> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            BinaryNode temp = stack.pop();
+            System.out.println(temp.data);
+            if (temp.right != null) {
+                stack.push(temp.right);
+            }
+            if (temp.left != null) {
+                stack.push(temp.left);
+            }
         }
     }
 }
