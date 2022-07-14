@@ -12,5 +12,7 @@ bt.addNode(20);
 bt.addNode(1);
 bt.preOrder();
 bt.calculateNumberOfVertices();
+bt.minValueOfVertices();
+bt.maxValueOfVertices();
     }
 }

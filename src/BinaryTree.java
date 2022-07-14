@@ -53,10 +53,12 @@ public class BinaryTree {
     }
 
     int numberOfVertices = 0;
+    int minNumberOfVertices;
+    int maxNumberOfVertices;
 
     public void calculateNumberOfVertices() {
         this.numberOfVerticesInternal(this.root);
-        System.out.print("Number of vertices: " + numberOfVertices);
+        System.out.println("Number of vertices: " + numberOfVertices);
     }
 
     private void numberOfVerticesInternal(BinaryNode currentNode) {
@@ -66,5 +68,27 @@ public class BinaryTree {
             this.numberOfVerticesInternal(currentNode.left);
             this.numberOfVerticesInternal(currentNode.right);
         }
+    }
+
+    public void minValueOfVertices() {
+        this.minValueOfVerticesInternal(this.root);
+        System.out.println("Minimal value of vertices: " + minNumberOfVertices);
+    }
+
+    private void minValueOfVerticesInternal(BinaryNode currentNode) {
+        if (currentNode == null) return;
+        minNumberOfVertices = currentNode.value;
+        this.minValueOfVerticesInternal(currentNode.left);
+    }
+
+    public void maxValueOfVertices() {
+        this.maxValueOfVerticesInternal(this.root);
+        System.out.println("Maximal value of vertices: " + maxNumberOfVertices);
+    }
+
+    private void maxValueOfVerticesInternal(BinaryNode currentNode) {
+        if (currentNode == null) return;
+        maxNumberOfVertices = currentNode.value;
+        this.maxValueOfVerticesInternal(currentNode.right);
     }
 }
