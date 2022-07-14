@@ -11,5 +11,6 @@ bt.addNode(3);
 bt.addNode(20);
 bt.addNode(1);
 bt.preOrder();
+bt.calculateNumberOfVertices();
     }
 }
